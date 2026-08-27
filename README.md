@@ -1,8 +1,11 @@
 # YOLO v26m - FPI-Det 目标检测模型
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/v/release/louhui-hello/-FPI-Det-YOLO-V26m-)](https://github.com/louhui-hello/-FPI-Det-YOLO-V26m-/releases)
 
-本项目包含一个基于 **YOLO v26m** 架构的目标检测模型权重文件，使用 **FPI-Det** 数据集训练，采用 **FP32** 精度。
+本项目包含基于 **YOLO v26m** 架构的目标检测模型权重，使用 **FPI-Det** 数据集训练，采用 **FP32** 精度。
+
+---
 
 ## 模型信息
 
@@ -16,21 +19,25 @@
 | **许可证** | MIT |
 | **框架** | Ultralytics YOLO / PyTorch |
 
+---
+
 ## 适用范围
 
-该模型适用于以下场景：
+| 场景 | 是否适用 | 说明 |
+|------|----------|------|
+| PC 端推理 | ✅ | 原生支持，性能最佳 |
+| 边缘设备（香橙派、树莓派5） | ✅ | 可运行，建议使用 FP16 或 INT8 量化版 |
+| 嵌入式 MCU（STM32、ESP32） | ❌ | 模型过大，需量化蒸馏后部署 |
+| 教师模型（蒸馏/量化） | ✅ | 可作为教师模型训练轻量化学生模型 |
+| 研究与学习 | ✅ | 完全开源，适合学习 YOLO 架构 |
 
-- PC 端目标检测推理
-- 边缘计算设备（如香橙派、树莓派 5）推理
-- 研究学习与二次开发
-- 工业视觉检测原型验证
-- **作为教师模型，量化蒸馏后部署到嵌入式设备**
+> **注意**：FP32 模型大小为 131 MB，不适合直接在 STM32/ESP32 等资源受限的 MCU 上运行。如需部署到嵌入式设备，请先进行模型量化或蒸馏。
 
-> **注意**：FP32 模型大小为 131 MB，不适合直接在 STM32/ESP32 等资源受限的 MCU 上运行。如需部署到嵌入式设备，请先进行模型量化（FP16 / INT8）或蒸馏。
+---
 
 ## 快速开始
 
-### 1. 安装依赖
+### 环境准备
 
 ```bash
-pip install torch ultralytics
+pip install -r requirements.txt
