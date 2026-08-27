@@ -1,0 +1,11 @@
+from ultralytics import YOLO
+
+# 加载模型
+model = YOLO("best.pt")
+
+# 单张图片推理
+results = model("image.jpg", conf=0.25)
+results[0].show()
+
+# 批量推理并保存结果
+results = model(["img1.jpg", "img2.jpg"], conf=0.25, save=True)
